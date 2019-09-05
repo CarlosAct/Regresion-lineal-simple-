@@ -1,0 +1,20 @@
+x <- c(635,644,711,708,836,820,810,870,856,923,878,937,948)
+y <- c(100,93,88,84,77,75,74,63,57,55,47,43,38)
+plot(x,y)
+
+mod <- lm(y~x)
+abline(lm(y~x))
+summary(mod)
+ypro <- predict(mod)
+b0 <- round(mod$coefficients[1],4)
+b1 <- round(mod$coefficients[2],4)
+
+require(ggplot2) 
+qplot(x, y,
+      main = "Grafica de Regresion", ylab = "Velocidad1",
+      xlab = "Velocidad2", geom = c("point"),
+      method = "lm") + geom_line(aes( y = ypro),lwd = 1.2, color = 4) + 
+  geom_text(x=46, y=49, aes(label = paste("y", "=",b0,"+",b1,"*","x"))) 
+t<- qt(p= .95 + .025, df= 11, lower.tail=TRUE)
+it1= b1 + (t*.01837)
+it2= b1 - (t*.01837)
