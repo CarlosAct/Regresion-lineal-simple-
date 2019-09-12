@@ -24,7 +24,7 @@ sy <- 259.8*((1/50)+((xf-xm)^2)/sxx)^1/2
 yg<- b0+xf*b1
 iy1 <- yg + (t*sy)
 iy2 <- yg - (t*sy)
-
-x1 <- data.frame(median(x))
+median(x)
+x1 <- data.frame(x=77.5)
 confint(mod,'x',level = .95)
 predict(mod,x1,interval = "confidence")
